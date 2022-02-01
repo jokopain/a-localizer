@@ -1,0 +1,71 @@
+/** Mixins **/
+=flex($der, $justy, $align)
+  display: flex
+  flex-direction: $der
+  justify-content: $justy
+  align-items: $align
+
+=font($size, $weight)
+  font-size: $size
+  font-weight: $weight
+
+=radial-gradient($from, $to)
+  // background: -moz-radial-gradient(left, circle cover, $from 0%, $to 100%)
+  // background: -webkit-gradient(radial, center left, 0px, center left, 100%, color-stop(0%, $from), color-stop(100%, $to))
+  // background: -webkit-radial-gradient(left, circle cover, $from 0%, $to 100%)
+  // background: -o-radial-gradient(left, circle cover, $from 0%, $to 100%)
+  // background: -ms-radial-gradient(left, circle cover, $from 0%, $to 100%)
+  background-image: radial-gradient(100% 35%, 70% 100%, $from 30%, $to 100%), radial-gradient(0% 75%, 70% 100%, $from 30%, $to 100%)
+  background-color: $from
+
+/** Vars **/    
+$primary-color: #3770E1
+$secondary-color: #818181
+$white: #FFFFFF
+$border: #E0E0E0
+$font-ligth: 300
+$font-medium: 500
+$font-semi-bold: 600
+$font-bold: 700
+
+$gutter: 30px
+/** def.calss **/
+.container
+    // padding: 0 50px
+    // outline: 1px solid black
+
+section.container
+  margin: 0 auto
+  width: 1110px
+  margin-top: 100px
+  padding: unset
+  .title
+    margin: 0 auto
+    text-align: center
+    margin-bottom: $gutter
+
+@media (max-width: 1100px)
+  section.container
+    width: 600px
+
+@media (max-width: 640px)
+  section.container
+    width: 288px
+
+section.container_cabinet
+  margin: 0 auto
+  width: 1110px
+  margin-top: 100px
+  padding: unset
+  .title
+    margin: 0 auto
+    text-align: center
+    margin-bottom: $gutter
+
+@media (max-width: 1200px)
+  section.container_cabinet
+    width: 600px
+
+@media (max-width: 640px)
+  section.container_cabinet
+    width: 288px
