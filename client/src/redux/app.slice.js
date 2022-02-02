@@ -57,6 +57,16 @@ const appSlice = createSlice({
       state.loading = false
       state.error = action.error
     },
+    'user/selfEdit/pending': (state, action) => {
+      state.loading = true
+    },
+    'user/selfEdit/fulfilled': (state, action) => {
+      state.loading = false
+    },
+    'user/selfEdit/rejected': (state, action) => {
+      state.loading = false
+      state.error = action.error
+    },
     'translations/saveAll/fulfilled': (state, action) => {
       state.notification = {
         message: "Translations successfully saved!"

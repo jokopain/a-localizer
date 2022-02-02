@@ -21,7 +21,7 @@ module.exports = function(app) {
     /* Auth */
     app.post("/api/auth/login", Auth.login);
     app.get("/api/auth/me", [mw.isAuth], Auth.me);
-    // app.get("/api/auth/logout", [mw.isAuth], Auth.logout);
+    app.post("/api/auth/selfEdit", [mw.isAuth], Auth.selfEdit);
 
     /* Users */
     app.post("/api/user/create", [mw.isAuth, mw.isValid(schemas.user_create)], Users.create);

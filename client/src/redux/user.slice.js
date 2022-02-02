@@ -18,6 +18,14 @@ export const getMe = createAsyncThunk(
   }
 )
 
+export const selfEdit = createAsyncThunk(
+  'user/selfEdit',
+  async (data, thunkAPI) => {
+    const response = await API.Auth.selfEdit(data)
+    return response
+  }
+)
+
 
 const userSlice = createSlice({
   name: 'user',
@@ -25,6 +33,11 @@ const userSlice = createSlice({
   reducers: {
     toggleMeLoading(state, action){
       state.loading = action.payload
+    },
+    logout(state){
+      state.isAuth = false;
+      localStorage.removeItem("token")
+      state.userInfo = initialState.userInfo;
     }
   },
   extraReducers: {
@@ -41,7 +54,18 @@ const userSlice = createSlice({
       state.loading = false;
       localStorage.removeItem("token");
       state.error = action.error;
-    }
+    },
+    [selfEdit.fulfilled]: (state, action) => {
+      state.loading = false;
+      state.userInfo = action.payload;
+    },
+    [selfEdit.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [selfEdit.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.error;
+    },
   }
 })
 
@@ -52,5 +76,6 @@ const userSlice = createSlice({
 // }
 
 export const toggleMeLoading = userSlice.actions.toggleMeLoading
+export const logout = userSlice.actions.logout
 
 export default userSlice.reducer

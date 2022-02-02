@@ -34,6 +34,7 @@ export default {
     Auth: {
         login: async (data) => await Request("post", "auth/login", data),
         me: async () => await Request("get", "auth/me"),
+        selfEdit: async (data) => await Request("post", "auth/selfEdit", data),
     },
     Namespace: {
         find: async (data) =>  await Request("get", "namespace/find", data),

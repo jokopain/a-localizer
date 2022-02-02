@@ -9,6 +9,7 @@ import Login from './pages/Login/Login';
 import Namespace from "./pages/Namespace/Namespace";
 import Settings from "./pages/Settings";
 import Manage from "./pages/Manage";
+import Logout from "./pages/Logout";
 
 /* Redux */
 import { useSelector, useDispatch } from 'react-redux';
@@ -84,6 +85,7 @@ export default function() {
         <Route index element={<Dashboard />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<Logout />} />
         <Route 
           path="/namespace/:namespace" 
           element={<PrivateRoute rule={"pages:namespaces"}><Namespace /></PrivateRoute>} 

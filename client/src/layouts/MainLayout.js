@@ -11,6 +11,7 @@ import {findLanguage} from "../redux/language.slice";
 
 /* Components */
 import PrivateComponent from "../components/PrivateComponent";
+import MiniProfile from "./MiniProfile";
 
 /* Utils */
 import { useNavigate, useParams } from "react-router-dom";
@@ -121,10 +122,7 @@ const MainLayout = ({children, user}) => {
                     <Typography.Text>
                         {`${user.firstName} ${user.lastName}`}
                     </Typography.Text>
-                    <Button 
-                        type="primary"
-                        icon={<SettingOutlined />}
-                    />
+                    <MiniProfile />
                     
                 </Header>
                 <Content className={css.content}>

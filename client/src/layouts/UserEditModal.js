@@ -1,29 +1,30 @@
 import { Modal, Form, Input, Button, Select, Spin, message } from 'antd';
 import {useDispatch, useSelector} from "react-redux";
-import {updateUser, createUser} from "../../../../redux/users.slice";
+import {selfEdit} from "../redux/user.slice";
 
 const UserEditModel = (props) => {
     const dispatch = useDispatch();
-    const {visible, onCancel: handelCancel, onOk: handleOk, formData} = props;
-    const {loading} = useSelector(state => state.users);
-    const isAdd = !formData?.id
+    const {visible, onCancel: handelCancel, onOk: handleOk} = props;
+    const {loading, userInfo} = useSelector(state => state.user);
+    
     const handleSubmit = (values) => {
-        const data = {...values};
-        if(isAdd && !data.password) {
-            return message.error("Password is required")
-        } else if (!isAdd && (!data.password || data.password === "")) {
-            delete data.password
-        }
-        if(formData.id){
-            dispatch(updateUser({id: formData.id, data}))
-        } else {
-            dispatch(createUser(data))
-        }
+        dispatch(selfEdit(values))
+        // const data = {...values};
+        // if(isAdd && !data.password) {
+        //     return message.error("Password is required")
+        // } else if (!isAdd && (!data.password || data.password === "")) {
+        //     delete data.password
+        // }
+        // if(formData.id){
+        //     dispatch(updateUser({id: formData.id, data}))
+        // } else {
+        //     dispatch(createUser(data))
+        // }
     }
 
     return(
         <Modal 
-            title={`${isAdd ? "Add" : "Edit"} User`}
+            title={`Self Edit`}
             visible={visible} 
             cancelButtonProps={{
                 style: {
@@ -33,12 +34,15 @@ const UserEditModel = (props) => {
             onOk={handleOk}
             onCancel={handelCancel}
             destroyOnClose={true}
-            // forceRender={true}
             >
             <Spin spinning={loading} tip="Saving...">
-                <Form onFinish={handleSubmit} initialValues={formData}>
+                <Form 
+                    labelCol={{ span: 4 }}
+                    wrapperCol={{ span: 32 }}
+                    onFinish={handleSubmit} 
+                    initialValues={userInfo}>
                     <Form.Item label={"Username"} name={"username"}>
-                        <Input />
+                        <Input disabled/>
                     </Form.Item>
                     <Form.Item label={"First Name"} name={"firstName"}>
                         <Input />
@@ -47,7 +51,7 @@ const UserEditModel = (props) => {
                         <Input />
                     </Form.Item>
                     <Form.Item label={"Role"} name={"role"}>
-                        <Select>
+                        <Select disabled>
                             <Select.Option value="admin">Admin</Select.Option>
                             <Select.Option value="translator">Translator</Select.Option>
                         </Select>

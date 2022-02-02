@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const {JWT_SECRET} = process.env;
 const Models = require("../models");
+const _ = require("lodash");
 
 exports.login = async (req, res) => {
     const {username, password} = req.body;
@@ -84,6 +85,39 @@ exports.me = async (req, res) => {
 
 }
 
-exports.logout = (req, res) => {
-    
+exports.selfEdit = async (req, res) => {
+    try {
+        const user = await Models.User.findOne({
+            where: {username: req.__current_username},
+            include: ["rules"],
+        });
+        const {body} = req;
+
+        const to_update = {...body};
+        delete to_update.password
+
+        if(body.password && body.password !== ""){
+            to_update.hashed_password = Models.User.generatePasswordHash(body.password);
+        }
+
+        await user.update(_.omit(to_update, ["role", "username"]));
+        await user.save();
+
+
+        res.status(200).json({
+            status: 200,
+            data: {
+                ..._.omit({...user.dataValues}, "hashed_password"),
+                rules: Models.User.formateRules(user.rules)
+            }
+        })
+
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({
+            status: 400,
+            message: "Bad Request",
+            data: null
+        })
+    }
 }
