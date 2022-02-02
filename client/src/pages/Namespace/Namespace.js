@@ -14,7 +14,8 @@ import {
     restoreTranslation,
     setCurrentPage,
     resetChanges,
-    toggleEditMode
+    toggleEditMode,
+    setPageSize
 } from "../../redux/translations.slice";
 import {useDispatch, useSelector} from "react-redux";
 
@@ -30,8 +31,6 @@ import ToolBar from "../../components/ToolBar";
 /* Styles */
 import css from "./edit.module.sass";
 
-const pageSize = 10;
-
 const Namespace = () => {
     const params = useParams()
     const {
@@ -41,7 +40,8 @@ const Namespace = () => {
             currentPage, 
             touched,
             editMode,
-            refetch
+            refetch,
+            pageSize
         } = useSelector(state => state.translations);
     const {items: languages} = useSelector(state => state.language);
     const {items: namespaces} = useSelector(state => state.namespace);
@@ -65,7 +65,7 @@ const Namespace = () => {
             offset: (currentPage * pageSize) - pageSize,
             limit: pageSize
         }))
-    }, [currentPage])
+    }, [currentPage, pageSize])
 
     useEffect(() => {
         if(refetch){
@@ -165,6 +165,9 @@ const Namespace = () => {
         pageSize: pageSize,
         currentPage: currentPage, 
         position: [ "bottomLeft" ],
+        onShowSizeChange: (_, size) => {
+            dispatch(setPageSize(size))
+        },
         total: total || 0,
         disabled: touched || searchMode ? true : false,
         onChange: (page) => {
@@ -214,7 +217,7 @@ const Namespace = () => {
                 scroll={{ x: 1300 }}
                 loading={loading}
                 columns={columns(editMode, onValueChange, languages, handleAdd, handleRemove, handleRestore)} 
-                dataSource={items.slice(0, 10)} 
+                dataSource={items.slice(0, pageSize)} 
                 pagination={pagination}
             />    
         </div>

@@ -13,7 +13,8 @@ const initialState = {
   refetch: false,
   exportStatus: "",
   exportPercent: 0,
-  exportData: null
+  exportData: null,
+  pageSize: 10
 }
 
 export const findNamespaces = createAsyncThunk(
@@ -103,6 +104,9 @@ const namespaceSlice = createSlice({
     },
     setExportData(state, action){
       state.exportData = action.payload
+    },
+    setPageSize(state, action){
+      state.pageSize = action.payload
     }
   },
   extraReducers: {
@@ -148,5 +152,8 @@ const namespaceSlice = createSlice({
   }
 })
 
+export const {
+  setPageSize
+} = namespaceSlice.actions
 
 export default namespaceSlice.reducer

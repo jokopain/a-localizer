@@ -72,6 +72,9 @@ const translationSlice = createSlice({
     setCurrentPage(state, action){
       state.currentPage = action.payload
     },
+    setPageSize(state, action){
+      state.pageSize = action.payload
+    },
     createTranslation(state, action){
       state.items.unshift({...action.payload, created: true});
       state.touched = true;
@@ -138,7 +141,8 @@ export const {
   restoreTranslation,
   setCurrentPage,
   resetChanges,
-  toggleEditMode
+  toggleEditMode,
+  setPageSize
 } = translationSlice.actions
 
 
