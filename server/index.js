@@ -16,7 +16,19 @@ api.use(morgan('dev'));
 
 require('./routes')(api);
 
-api.use("/", express.static('public'));
+const REACT_ROUTES = [
+    "/",
+    "/dashboard",
+    "/login",
+    "/logout",
+    "/namespace/*",
+    "/settings/*",
+    "/manage/*"
+]
+
+for (const route of REACT_ROUTES) {
+    api.use(route, express.static('public'));
+}
 
 api.listen(port, () => {
     console.log(`A-Localize app listening on port ${port}`)

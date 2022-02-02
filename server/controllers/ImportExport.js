@@ -12,7 +12,10 @@ exports.import_translations = async (req, res) => {
             const language = await Models.Language.findOne({where: {locale: locale}})
             for (const translationKey in data) {
                 const [key, created] = await Models.Key.findOrCreate({
-                    where: { key: translationKey },
+                    where: { 
+                        key: translationKey,
+                        namespace_id: namespace.id
+                    },
                     defaults: {
                         key: translationKey,
                         namespace_id: namespace.id

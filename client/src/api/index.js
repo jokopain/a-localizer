@@ -1,6 +1,6 @@
 import * as axios from "axios";
 
-const API_URL = process.env.REACT_API_URL
+const API_URL = process.env.REACT_APP_API_URL
 
 const Request = async (method, endpoint, data = {}) => {
     const API = axios.create({
