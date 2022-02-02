@@ -17,7 +17,7 @@ import css from "./login.module.sass";
 const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const {token, meLoading, loginLoading, loginError} = useSelector(state => state.auth);
+    const {token, loading, error} = useSelector(state => state.auth);
     
     useEffect(() => {
         if(token) {
@@ -27,10 +27,10 @@ const Login = () => {
     }, [token])
 
     useEffect(() => {
-        if(loginError){
-            notification.error({message: "Error on login"});
+        if(error){
+            notification.error({message: error.message});
         }
-    }, [loginError])
+    }, [error])
 
     const handleSubmit = ({username, password}) => {
         dispatch(login({username, password}))
@@ -38,7 +38,7 @@ const Login = () => {
 
     return(
         <div className={css.pageWrapper}>
-            <Form onSubmit={handleSubmit} loading={loginLoading}/>
+            <Form onSubmit={handleSubmit} loading={loading}/>
         </div>
     )
 }

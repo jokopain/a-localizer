@@ -59,6 +59,24 @@ const lang_create = Object.freeze({
     }
 })
 
+const lang_update = Object.freeze({
+    locale: {
+        type: String,
+        custom: async (value, id) => {
+            try {
+                const current = await Models.Language.findOne({where: {id: id}});
+                const lang = await Models.Language.findOne({where: {locale: value}});
+                if(current.locale === lang?.locale) return false;
+                return lang ? "unique:Locale already in use!" : false;
+            } catch (error) {
+                console.log(error);
+
+                return " "
+            }
+        }
+    }
+})
+
 const namespace_create = {
     name: {
         type: String,
@@ -73,6 +91,19 @@ const namespace_create = {
         required: true,
         custom: async (value) => {
             const namespace = await Models.Namespace.findOne({where: {slug: value}});
+            return namespace ? "unique:Slug already in use!" : false;
+        }
+    }
+}
+
+const namespace_update = {
+    slug: {
+        type: String,
+
+        custom: async (value, id) => {
+            const current = await Models.Namespace.findOne({where: {id: id}});
+            const namespace = await Models.Namespace.findOne({where: {slug: value}});
+            if(current.locale === namespace?.locale) return false;
             return namespace ? "unique:Slug already in use!" : false;
         }
     }
@@ -100,7 +131,7 @@ const string_create = {
         required: true,
         custom: async (value) => {
             const lang = await Models.Language.findOne({where: {locale: value}});
-                return !lang ? "notExist:Unknown Language!" : false;
+            return !lang ? "notExist:Unknown Language!" : false;
         }
     }
 }
@@ -147,5 +178,7 @@ module.exports = {
     namespace_create,
     string_create,
     string_update,
-    import_translations
+    import_translations,
+    lang_update,
+    namespace_update
 }

@@ -46,7 +46,7 @@ const validate = async (schema, data) => {
         const errors = {}
         for (const key in schema) {
             if("custom" in schema[key]){
-                let isInvalid = await schema[key].custom(data[key])
+                let isInvalid = await schema[key].custom(data[key], data?.id || null)
                 if(isInvalid) {
                     const [type, msg] = isInvalid.split(":")
                     errors[key] = {
@@ -75,6 +75,7 @@ exports.isValid = (schema) => async (req, res, next) => {
             const result = await validate(schema, entry);
             if(!result.isValid){
                 return res.status(400).json({
+                    message: "Validation Error",
                     status: 400,
                     data: result.errors
                 })
@@ -84,6 +85,7 @@ exports.isValid = (schema) => async (req, res, next) => {
         const result = await validate(schema, body);
         if(!result.isValid){
             return res.status(400).json({
+                message: "Validation Error",
                 status: 400,
                 data: result.errors
             })

@@ -10,7 +10,7 @@ import {isAllowed} from "../../../index";
 import css from "../manage.module.sass";
 
 const NamespaceItem = (props) => {
-    const {name, slug, onExport: handleExport} = props;
+    const {name, slug, id, onExport: handleExport} = props;
     const [editMode, setEditMode] = useState(false);
     const [form] = Form.useForm();
     const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const NamespaceItem = (props) => {
     const handleSubmit = (values) => {
         dispatch(updateNamespaces({
             slug: slug,
-            data: values
+            data: {...values, id}
         }))
         setEditMode(false)
     }

@@ -1,5 +1,6 @@
 import * as axios from "axios";
-
+import _ from "lodash";
+import { onValidationError } from "..";
 const API_URL = process.env.REACT_APP_API_URL
 
 const Request = async (method, endpoint, data = {}) => {
@@ -13,8 +14,11 @@ const Request = async (method, endpoint, data = {}) => {
         const response = await API[method].call(API, endpoint, data);
         return response.data.data;
     } catch (error) {
-        console.log("eee", error);
-        return Promise.reject(error);
+        const e = _.has(error, "response.data.message") ? error.response.data.message : error;
+        if(e === "Validation Error"){
+            onValidationError(error.response.data)
+        }
+        return Promise.reject(e);
     }
 }
 

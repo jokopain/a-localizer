@@ -33,6 +33,9 @@ const appSlice = createSlice({
     },
     clearNotification(state){
       state.notification = null;
+    },
+    setError(state, action){
+      state.error = action.payload;
     }
   },
   extraReducers: {
@@ -140,7 +143,8 @@ const appSlice = createSlice({
 export const { 
     toggleLoading,
     clearNotification,
-    clearError
+    clearError,
+    setError
 } = appSlice.actions
 
 export default appSlice.reducer

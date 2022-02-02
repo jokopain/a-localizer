@@ -32,13 +32,13 @@ module.exports = function(app) {
     app.get("/api/language/find", [mw.isAuth], Languages.find);
     app.get("/api/language/findOne/:locale", [mw.isAuth], Languages.findOne);
     app.post("/api/language/create", [mw.isAuth, mw.isValid(schemas.lang_create)], Languages.create);
-    app.post("/api/language/update/:locale", [mw.isAuth], Languages.update);
+    app.post("/api/language/update/:locale", [mw.isAuth, mw.isValid(schemas.lang_update)], Languages.update);
 
     /* Namespace */
     app.get("/api/namespace/find", [mw.isAuth], Namespaces.find);
     app.get("/api/namespace/:slug", [mw.isAuth], Namespaces.findOne);
     app.post("/api/namespace/create", [mw.isAuth, mw.isValid(schemas.namespace_create)], Namespaces.create);
-    app.post("/api/namespace/update/:slug", [mw.isAuth], Namespaces.update);
+    app.post("/api/namespace/update/:slug", [mw.isAuth, mw.isValid(schemas.namespace_update)], Namespaces.update);
 
     // /* Translation */
     app.post("/api/translation/find", [mw.isAuth], Translations.find);

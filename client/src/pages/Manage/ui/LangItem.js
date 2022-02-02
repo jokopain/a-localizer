@@ -10,7 +10,7 @@ import css from "../manage.module.sass";
 import {isAllowed} from "../../../index";
 
 const LangItem = (props) => {
-    const {name, locale} = props;
+    const {name, locale, id} = props;
     const [editMode, setEditMode] = useState(false);
     const [form] = Form.useForm();
     const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const LangItem = (props) => {
     const handleSubmit = (values) => {
         dispatch(updateLanguage({
             locale: locale,
-            data: values
+            data: {...values, id}
         }))
         setEditMode(false)
     }
