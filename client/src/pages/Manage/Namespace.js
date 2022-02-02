@@ -22,9 +22,10 @@ const Namespace = () => {
 
     const dispatch = useDispatch();
 
-    const handleSubmit = (values) => {
+    const handleSubmit = (values, form) => {
         setVisible(false)
         dispatch(createNamespaces(values))
+        form.resetFields()
     }
 
     const handleExport = (slug) => {

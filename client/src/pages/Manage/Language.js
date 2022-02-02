@@ -19,9 +19,10 @@ const Language = () => {
     const [visible, setVisible] = useState(false);
     const dispatch = useDispatch();
 
-    const handleSubmit = (values) => {
+    const handleSubmit = (values, form) => {
         setVisible(false)
         dispatch(createLanguage(values))
+        form.resetFields()
     }
 
     return(

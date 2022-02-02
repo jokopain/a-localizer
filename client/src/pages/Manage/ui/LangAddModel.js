@@ -10,7 +10,7 @@ const LangAddModal = (props) => {
             onCancel={handleCancel}
             okButtonProps={{ htmlType: "submit" }}
             >
-            <Form form={form} onFinish={handleOk}>
+            <Form form={form} onFinish={(values) => handleOk(values, form)}>
                 <Form.Item label={"Name"} name={"name"}>
                     <Input />
                 </Form.Item>
