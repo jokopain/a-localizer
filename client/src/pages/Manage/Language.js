@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 
 /* AntD */
-import { Button, Row, Col, Card } from "antd";
+import { Button, Row, Col, Card, Empty } from "antd";
 
 /* Components */
 import LangItem from "./ui/LangItem";
@@ -35,12 +35,15 @@ const Language = () => {
                 visible={visible}
             />
             <Row gutter={[8, 8]} style={{width: "100%", marginTop: 10}}>
-                {items.map(item => (
+                {items.length ? items.map(item => (
                     <Col span={8}>
                         <Card>
                             <LangItem {...item}/>  
                         </Card>  
-                    </Col>))}
+                    </Col>))
+                    :
+                    <Empty />
+                }
             </Row>
         </div>
     )

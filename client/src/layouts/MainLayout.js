@@ -86,11 +86,15 @@ const MainLayout = ({children, user}) => {
                         </PrivateComponent>
                         <PrivateComponent rule={"pages:namespaces"}>
                             <SubMenu key={"namespace"} icon={<TranslationOutlined />} title={"Namespaces"}>
-                                {namespaces.map(item => (
+                                {namespaces.length ? namespaces.map(item => (
                                     <Menu.Item key={item.slug}>
                                         <Link to={`/namespace/${item.slug}`} >{item.name}</Link>
                                     </Menu.Item>
-                                ))}
+                                )) : 
+                                    <Menu.Item disabled key={"no_items"}>
+                                        No Namespaces yet
+                                    </Menu.Item>
+                                }
                             </SubMenu >
                         </PrivateComponent>
                         <PrivateComponent rule={"pages:settings"}>
