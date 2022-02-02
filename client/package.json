@@ -28,6 +28,7 @@
   "scripts": {
     "start": "PORT=3002 react-scripts start",
     "build": "react-scripts build",
+    "build-to-server": "BUILD_PATH='../server/public' react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

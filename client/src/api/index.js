@@ -1,10 +1,10 @@
 import * as axios from "axios";
 
-
+const API_URL = process.env.REACT_API_URL
 
 const Request = async (method, endpoint, data = {}) => {
     const API = axios.create({
-        baseURL: "http://localhost:3001/api/",
+        baseURL: API_URL,
         params: {
             token: localStorage.getItem("token") || null
         }

@@ -16,7 +16,7 @@ api.use(morgan('dev'));
 
 require('./routes')(api);
 
-api.use(express.static('../public'));
+api.use("/", express.static('public'));
 
 api.listen(port, () => {
     console.log(`A-Localize app listening on port ${port}`)
