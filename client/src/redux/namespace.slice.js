@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk, createAction } from "@reduxjs/toolkit";
 import API from "../api";
 import {keysToJSON} from "../general/helpers";
-const toggleRefetch = createAction('namespace/toggleRefetch');
+export const toggleRefetch = createAction('namespace/toggleRefetch');
 export const changeExportStatus = createAction('namespace/changeExportStatus');
 const setExportData = createAction('namespace/setExportData');
 

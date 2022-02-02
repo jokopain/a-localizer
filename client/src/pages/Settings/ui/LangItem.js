@@ -1,11 +1,15 @@
-import React, {useState} from "react";
-import { Upload, message, Button, Typography, Input, Divider } from 'antd';
-import { UploadOutlined, PlusOutlined, InboxOutlined } from '@ant-design/icons';
+import React, {useEffect, useState} from "react";
+import { Upload, Typography } from 'antd';
+import { InboxOutlined } from '@ant-design/icons';
 import css from "../Import/import.module.sass";
 
 const LangItem = (props) => {
-    const {onChange, lang} = props;
+    const {onChange, lang, reset} = props;
     const [fileInfo, setFileInfo] = useState(null)
+
+    useEffect(() => {
+        setFileInfo(null)
+    }, [reset])
 
     const handleChange = (info) => {
         if(info.file.status === "removed"){
@@ -41,6 +45,7 @@ const LangItem = (props) => {
             <Typography.Title level={3}>{lang}</Typography.Title>
             <div className={css.uploadWrap}>
                 <Upload 
+                    customRequest={({onSuccess}) => onSuccess("ok")}
                     multiple={false}
                     listType="picture"
                     fileList={fileInfo ? [fileInfo] : []}
