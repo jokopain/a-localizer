@@ -13,7 +13,7 @@
   <h3 align="center">A-Localizer</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    A tool to manage i18n-next locales.
     <br />
     <a href="https://github.com/jokopain/a-localizer"><strong>Explore the docs »</strong></a>
     <br />
@@ -26,7 +26,7 @@
   </p>
 </div>
 
-A tool to manage i18n-next locales.
+
 
 I builded it in less than one week, so some parts of code is peace of ... =) 
 
