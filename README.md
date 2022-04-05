@@ -41,6 +41,35 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+<!-- Examples -->
+## Examples
+
+### Dashboard
+
+See the status of localizations
+<img src="docs/dashboard.png" alt="dashboard" width="100%">
+
+### Manage
+Manage your languages/locales
+<img src="docs/langs.png" alt="langs" width="100%"> 
+
+and namespaces, also you always can export it!
+<img src="docs/namespaces.png" alt="namespaces" width="100%"> 
+
+### Namespaces/Keys
+Find keys, and edit them
+<img src="docs/keys.png" alt="keys" width="100%"> 
+<img src="docs/keys2.png" alt="keys2" width="100%"> 
+
+### Settings
+Import already exist namespaces from i18n-next in json format 
+<img src="docs/import.png" alt="import" width="100%"> 
+
+Mange your users, add edit them and also you have 2 roles
+<img src="docs/users.png" alt="users" width="100%"> 
+
+
+
 <!-- CONTRIBUTING -->
 ## Contributing
 
