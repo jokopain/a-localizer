@@ -1,94 +1,84 @@
-<div id="top"></div>
+# Turborepo starter
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
+This is an official starter Turborepo.
 
-<br />
-<div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="client/src/assets/images/logo.svg" alt="Logo" width="80" height="80">
-  </a>
+## Using this example
 
-  <h3 align="center">A-Localizer</h3>
+Run the following command:
 
-  <p align="center">
-    A tool to manage i18n-next locales.
-    <br />
-    <a href="https://github.com/jokopain/a-localizer"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <!-- <a href="https://github.com/jokopain/a-localizer">View Demo</a> 
-    ·-->
-    <a href="https://github.com/jokopain/a-localize/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/jokopain/a-localizer/issues">Request Feature</a>
-  </p>
-</div>
+```sh
+npx create-turbo@latest
+```
 
+## What's inside?
 
+This Turborepo includes the following packages/apps:
 
-I builded it in less than one week, so some parts of code is peace of ... =) 
+### Apps and Packages
 
-### Built With
+- `docs`: a [Next.js](https://nextjs.org/) app
+- `web`: another [Next.js](https://nextjs.org/) app
+- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
+- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
-* [React.js](https://reactjs.org/)
-* [Sequelize](https://sequelize.org/)
-* [Express](https://expressjs.com/)
-* [Ant Design](https://ant.design/)
+### Utilities
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+This Turborepo has some additional tools already setup for you:
 
-<!-- Examples -->
-## Examples
+- [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [ESLint](https://eslint.org/) for code linting
+- [Prettier](https://prettier.io) for code formatting
 
-### Dashboard
+### Build
 
-See the status of localizations
-<img src="docs/dashboard.png" alt="dashboard" width="100%">
+To build all apps and packages, run the following command:
 
-### Manage
-Manage your languages/locales
-<img src="docs/langs.png" alt="langs" width="100%"> 
+```
+cd my-turborepo
+pnpm build
+```
 
-and namespaces, also you always can export it!
-<img src="docs/namespaces.png" alt="namespaces" width="100%"> 
+### Develop
 
-### Namespaces/Keys
-Find keys, and edit them
-<img src="docs/keys.png" alt="keys" width="100%"> 
-<img src="docs/keys2.png" alt="keys2" width="100%"> 
+To develop all apps and packages, run the following command:
 
-### Settings
-Import already exist namespaces from i18n-next in json format 
-<img src="docs/import.png" alt="import" width="100%"> 
+```
+cd my-turborepo
+pnpm dev
+```
 
-Mange your users, add edit them and also you have 2 roles
-<img src="docs/users.png" alt="users" width="100%"> 
+### Remote Caching
 
+> [!TIP]
+> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
 
+Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
 
-<!-- CONTRIBUTING -->
-## Contributing
+By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+```
+cd my-turborepo
+npx turbo login
+```
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+```
+npx turbo link
+```
 
-[contributors-shield]: https://img.shields.io/github/contributors/jokopain/a-localizer.svg?style=for-the-badge
-[contributors-url]: https://github.com/jokopain/a-localizer/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/jokopain/a-localizer.svg?style=for-the-badge
-[forks-url]: https://github.com/jokopain/a-localizer/network/members
-[stars-shield]: https://img.shields.io/github/stars/jokopain/a-localizer.svg?style=for-the-badge
-[stars-url]: https://github.com/jokopain/a-localizer/stargazers
+## Useful Links
+
+Learn more about the power of Turborepo:
+
+- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
+- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
+- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
+- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
+- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
+- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
