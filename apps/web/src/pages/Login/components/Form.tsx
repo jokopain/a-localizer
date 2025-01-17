@@ -1,7 +1,8 @@
 import React, {useEffect} from "react";
 import {Form, Input, Button, Typography, notification} from "antd";
-import css from "../login.module.sass";
+// import css from "../login.module.sass";
 
+const css = {form: ""}
 
 const LoginForm = (props) => {
     const {onSubmit: handleSubmit, loading} = props;

@@ -1,24 +1,28 @@
-import * as axios from "axios";
+import axios, { AxiosInstance, AxiosResponse } from "axios";
 import _ from "lodash";
-import { onValidationError } from "..";
+import { onValidationError } from "../main";
 const API_URL = process.env.REACT_APP_API_URL
+export type RequestMethods = "get" | "post" | "patch" | "delete";
 
-const Request = async (method, endpoint, data = {}) => {
-    const API = axios.create({
+const Request = async (method: RequestMethods, endpoint: string, data = {}) => {
+    const API: AxiosInstance = axios.create({
         baseURL: API_URL,
         params: {
             token: localStorage.getItem("token") || null
         }
     });
     try {
-        const response = await API[method].call(API, endpoint, data);
+        const response = await API[method].call(API, endpoint, data) as AxiosResponse;
         return response.data.data;
     } catch (error) {
-        const e = _.has(error, "response.data.message") ? error.response.data.message : error;
-        if(e === "Validation Error"){
-            onValidationError(error.response.data)
+        const err = error as {response: AxiosResponse};
+        if(err?.response?.data){
+            const e = _.has(err, "response.data.message") ? err.response.data.message : error;
+            if(e === "Validation Error"){
+                onValidationError(err.response.data)
+            }
+            return Promise.reject(e);
         }
-        return Promise.reject(e);
     }
 }
 

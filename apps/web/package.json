@@ -1,53 +1,40 @@
 {
-  "name": "client",
-  "version": "0.1.0",
+  "name": "web-ts",
   "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@reduxjs/toolkit": "^1.7.1",
-    "@testing-library/jest-dom": "^5.16.1",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.5.0",
     "antd": "^4.18.5",
     "axios": "^0.25.0",
     "file-saver": "^2.0.5",
     "flat": "^5.0.2",
     "jszip": "^3.7.1",
-    "node-sass": "^7.0.1",
-    "react": "^17.0.2",
-    "react-browser-router": "^2.1.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1",
-    "react-scripts": "5.0.0",
-    "react-syntax-highlighter": "^15.4.5",
-    "sass": "^1.49.0",
-    "uuid": "^8.3.2",
-    "web-vitals": "^2.1.4"
+    "uuid": "^8.3.2"
   },
-  "scripts": {
-    "start": "PORT=3002 react-scripts start",
-    "build": "react-scripts build",
-    "build-to-server": "BUILD_PATH='../server/public' react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@types/lodash": "^4.17.14",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "globals": "^15.14.0",
+    "typescript": "~5.6.2",
+    "typescript-eslint": "^8.18.2",
+    "vite": "^6.0.5"
   }
 }

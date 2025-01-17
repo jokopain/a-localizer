@@ -7,7 +7,9 @@ import { useDispatch } from "react-redux";
 /* Utils */
 import {isAllowed} from "../../../index";
 
-import css from "../manage.module.sass";
+// import css from "../manage.module.sass";
+
+const css = {tools: ""}
 
 const NamespaceItem = (props) => {
     const {name, slug, id, onExport: handleExport} = props;

@@ -29,7 +29,9 @@ import Header from "./ui/Header"
 import ToolBar from "../../components/ToolBar";
 
 /* Styles */
-import css from "./edit.module.sass";
+// import css from "./edit.module.sass";
+
+const css = {wrapper: ""}
 
 const Namespace = () => {
     const params = useParams()

@@ -13,7 +13,9 @@ import {useSelector, useDispatch} from "react-redux";
 import {createNamespaces, exportOneNamespace, changeExportStatus} from "../../redux/namespace.slice";
 
 /* Styles */
-import css from "./manage.module.sass";
+// import css from "./manage.module.sass";
+
+const css = {wrapper: ""}
 
 const Namespace = () => {
     const {items, exportStatus, exportData} = useSelector(state => state.namespace);

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 
 import JSZip from "jszip"
 
@@ -7,7 +7,15 @@ import { saveAs } from 'file-saver';
 import {changeExportStatus} from "../../../redux/namespace.slice";
 import { useDispatch } from "react-redux";
 
-import css from "../manage.module.sass"
+// import css from "../manage.module.sass"
+
+const css = {
+
+    exportProgress: "",
+    inner: "",
+    header: "",
+
+}
 
 const ExportProgress = (props) => {
     const {status = "", percent = 0, exportData, onClose: handleClose} = props

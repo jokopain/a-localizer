@@ -12,7 +12,9 @@ import {useSelector, useDispatch} from "react-redux";
 import {createLanguage} from "../../redux/language.slice";
 
 /* Styles */
-import css from "./manage.module.sass";
+// import css from "./manage.module.sass";
+
+const css = {wrapper: ""}
 
 const Language = () => {
     const {items} = useSelector(state => state.language);

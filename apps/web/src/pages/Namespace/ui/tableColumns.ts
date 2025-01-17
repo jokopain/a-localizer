@@ -1,7 +1,7 @@
 import {  Button } from 'antd';
 import {PlusOutlined, DeleteOutlined, ReloadOutlined} from "@ant-design/icons";
-import Cell from './Cell';
-import { isAllowed } from '../../..';
+// import Cell from './Cell';
+import { isAllowed } from '../../../main';
 
 
 const DEF_COLUMN = ({isEditMode, onValueChange}) => ( {

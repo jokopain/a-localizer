@@ -12,8 +12,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 /* Styles */
-import css from "./login.module.sass";
-
+// import css from "./login.module.sass";
+const css = {pageWrapper: ""}
 const Login = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();

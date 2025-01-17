@@ -1,7 +1,12 @@
 import React, {useEffect, useState} from "react";
 import { Upload, Typography } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
-import css from "../Import/import.module.sass";
+// import css from "../Import/import.module.sass";
+
+const css = {
+    uploadButton: "",
+    uploadWrap: "",
+}
 
 const LangItem = (props) => {
     const {onChange, lang, reset} = props;

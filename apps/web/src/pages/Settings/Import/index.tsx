@@ -16,7 +16,9 @@ import flatten from "flat";
 import API from "../../../api";
 
 /* Styles */
-import css from "./import.module.sass";
+// import css from "./import.module.sass";
+
+const css = {wrapper: ""}
 
 const Import = () => {
     const {items} = useSelector(state => state.language);

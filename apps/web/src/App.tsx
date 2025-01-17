@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import {useEffect} from "react";
 
 /* AntD */
 import {notification, Spin} from "antd";
@@ -25,7 +25,7 @@ import { useNavigate } from "react-router-dom";
 import MainLayout from './layouts/MainLayout';
 
 /* Styles */
-import "./styles/main.sass";
+// import "./styles/main.sass";
 
 const App = () => {
   const { isAuth, userInfo, error: meError } = useSelector(state => state.user);

@@ -12,7 +12,9 @@ import API from "../../../api";
 
 /* Styles */
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import css from "./api.module.sass";
+// import css from "./api.module.sass";
+
+const css = {wrapper: ""}
 
 const APIPage = () => {
     const [loading, setLoading] = useState(false);

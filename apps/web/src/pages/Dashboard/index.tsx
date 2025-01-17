@@ -2,8 +2,8 @@ import { Statistic, Card, Row, Col } from 'antd';
 import {TranslationOutlined, UserOutlined, KeyOutlined, ProfileOutlined} from "@ant-design/icons";
 import {useSelector} from "react-redux";
 
-import css from "./dashboard.module.sass"
-
+// import css from "./dashboard.module.sass"
+const css = {wrapper: ""}
 const Dashboard = () => {
     const {statistics} = useSelector(state => state.app)
     return(

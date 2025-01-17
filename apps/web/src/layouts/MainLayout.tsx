@@ -21,7 +21,14 @@ import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.svg";
 
 /* Styles */
-import css from "./layouts.module.sass";
+// import css from "./layouts.module.sass";
+
+const css = {
+    mainLayout: "",
+    logo: "",
+    header: "",
+    content: "",
+}
 
 const { Header, Content, Sider } = Layout;
 const { SubMenu } = Menu;

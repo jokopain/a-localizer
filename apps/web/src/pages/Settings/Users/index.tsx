@@ -13,7 +13,9 @@ import {findUsers, createUser, updateUser, setCurrentPage} from "../../../redux/
 import {useDispatch, useSelector} from "react-redux";
 
 /* Styles */
-import css from "./users.module.sass";
+// import css from "./users.module.sass";
+
+const css = {wrapper: ""}
 
 
 const Users = () => {
